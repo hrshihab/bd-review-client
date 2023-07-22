@@ -5,6 +5,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 const AllCategoriesCard = ({category}) => {
   const {setItems} = useContext(AuthContext)
   const categoryName = Object.keys(category)[1];
+  
     //console.log(category);
     const handleClick = ()=> {
       //console.log(category,'click koresilio');
@@ -19,7 +20,7 @@ const AllCategoriesCard = ({category}) => {
   
 
    
-    <Link to='/reviewItems' onClick={handleClick}>
+    <Link to={`/reviewItems/${categoryName}`} onClick={handleClick}>
     
    
      <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">

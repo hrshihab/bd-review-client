@@ -1,12 +1,19 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import ReviewItemsCard from './ReviewItemsCard';
+import { useLoaderData } from 'react-router-dom';
 
 const ReviewiItems = () => {
-  const {items} = useContext(AuthContext);
-  const itemName = Object.keys(items)[1];
-  const itemsCollection = items[itemName];
-  console.log(itemsCollection);
+
+  const items = useLoaderData();
+  //console.log(items);
+  const type = Object.keys(items)[1];
+  const itemsCollection = items[type];
+  //console.log(items[type]);
+  // const {items} = useContext(AuthContext);
+  // const itemName = Object.keys(items)[1];
+  // const itemsCollection = items[itemName];
+  // console.log(itemsCollection);
   return (
     <section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
@@ -16,7 +23,7 @@ const ReviewiItems = () => {
       </div>
     <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
         {
-          itemsCollection.map(item=> <ReviewItemsCard
+          itemsCollection?.map(item=> <ReviewItemsCard
           key={item.id}
           item={item}
           >
